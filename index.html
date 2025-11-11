@@ -1,16 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naveen Kumar - Gamma Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen Kumar - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+        
+        header .contact {
+            font-size: 1.1em;
+            margin-top: 15px;
+        }
+        
+        .content {
+            padding: 40px 50px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #667eea;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+        }
+        
+        .timeline-date {
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #764ba2;
+        }
+        
+        .skill-category h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .skill-category p {
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .education-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .achievements {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .achievements li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .conferences {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .conference-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .conference-category h4 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .conference-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .conference-item:last-child {
+            border-bottom: none;
+        }
+        
+        .conference-item strong {
+            color: #667eea;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .strategy-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #764ba2;
+        }
+        
+        .strategy-item h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .cards, .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body style="margin:0;padding:0;">
-  <iframe 
-    src="https://gamma.app/docs/Naveen-Kumar-fjqrgv67wv735t9"
-    width="100%"
-    height="100%"
-    style="border:none;position:fixed;top:0;left:0;bottom:0;right:0;">
-  </iframe>
+<body>
+    <div class="container">
+        <header>
+            <h1>Naveen Kumar</h1>
+            <div class="subtitle">Generative AI Specialist | Full Stack Developer | Cloud & Systems Engineer</div>
+            <div class="contact">
+                <strong>Email:</strong> naveen20430@gmail.com | <strong>Mobile:</strong> +91 98054 20430
+            </div>
+        </header>
+        
+        <div class="content">
+            <section class="intro">
+                <h2>Driving Innovation in AI & Tech</h2>
+                <p>Naveen Kumar is an innovative IT professional with 12+ years of experience in Generative AI, Full Stack Development, Cloud Computing, and Systems Management. His expertise spans building scalable AI-driven solutions, enterprise applications, and secure infrastructures.</p>
+                
+                <div class="cards">
+                    <div class="card">
+                        <h4>AI-Driven Solutions</h4>
+                        <p>Expertise in Generative AI and Machine Learning to create intelligent systems.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Full Stack Prowess</h4>
+                        <p>Proficient in both frontend (React.js, Next.js, JavaScript, TypeScript) and backend (Node.js, PHP, Python, Laravel) development.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cloud & Infrastructure</h4>
+                        <p>Strong command of cloud deployments (AWS, Azure, GCP) and containerization (Docker, Kubernetes).</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Educational Background</h2>
+                <div class="education-item">
+                    <strong>B.Tech (Computer Science)</strong> - HPU, Himachal Pradesh, 2014
+                </div>
+                <div class="education-item">
+                    <strong>12th (Non-Medical)</strong> - HP Board, 2008
+                </div>
+                <div class="education-item">
+                    <strong>10th</strong> - HP Board, 2006
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">Naveen's academic journey provided a solid foundation in computer science, complementing his extensive practical experience in the IT industry.</p>
+            </section>
+            
+            <section>
+                <h2>Professional Journey & Impact</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Apr 2023 - Present</div>
+                        <div class="timeline-title">Sr. Associate (Generative AI)</div>
+                        <div><strong>IIT Mandi iHub & HCI Foundation</strong></div>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Led Generative AI projects, including fine-tuning DeepSeek R1 and BERT models.</li>
+                            <li>Developed AI-driven CRM solutions and managed cloud deployments across AWS, GCP, and Azure.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Sep 2018 - Mar 2023</div>
+                        <div class="timeline-title">Project Associate</div>
+                        <div><strong>IIT Mandi DCS</strong></div>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Managed IT infrastructure, including PC labs, institutional servers, and faculty applications.</li>
+                            <li>Initiated and executed modernization of institutional websites and intranet portals.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Feb 2016 - Sep 2018</div>
+                        <div class="timeline-title">Freelance Web Developer</div>
+                        <div><strong>Upwork</strong></div>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Successfully delivered custom web solutions using PHP, Laravel, and WordPress for a global client base.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015-2016</div>
+                        <div class="timeline-title">Web Developer / PHP Developer Trainee</div>
+                        <div><strong>Apetrail Software and Recroitre Solutions</strong></div>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Early career roles building foundational web development skills.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Generative AI & ML</h4>
+                        <p><strong>Models:</strong> DeepSeek R1, BERT, GPT, llama</p>
+                        <p><strong>Concepts:</strong> Agentic AI, langchain, Langflow</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Web Development</h4>
+                        <p><strong>Frontend:</strong> React.js, Next.js, JavaScript, TypeScript</p>
+                        <p><strong>Backend:</strong> PHP, Laravel, CodeIgniter, CakePHP, WordPress, Drupal, Node.js, Python</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Backend & APIs</h4>
+                        <p><strong>Frameworks:</strong> Node.js, Python</p>
+                        <p><strong>Protocols:</strong> GraphQL, REST APIs</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Databases</h4>
+                        <p>MySQL, MSSQL, MongoDB, Redis, Vector DB, Neo4js</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Cloud & Infrastructure</h4>
+                        <p><strong>Platforms:</strong> AWS, Azure, GCP</p>
+                        <p><strong>Containerization:</strong> Kubernetes, Docker</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Cybersecurity</h4>
+                        <p>VPN, Firewalls</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Operating Systems</h4>
+                        <p>Windows, Linux (Ubuntu, CentOS, Red Hat)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Labs & Infrastructure Management</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Software Installation & Configuration</h4>
+                        <p>Skilled in deploying and maintaining academic and research software stacks for faculty and students.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cluster-based OS Setup</h4>
+                        <p>Experience in setting up and managing Linux clusters (Ubuntu, CentOS, Red Hat) for compute-intensive tasks.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Virtualization & Containers</h4>
+                        <p>Implemented VM-based labs and Docker/Kubernetes clusters for scalable research environments.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Impactful Projects & Solutions</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>E-Gate Pass System</h4>
+                        <p>Developed for Punjab & Haryana High Court: A secure digital gate pass system with QR authentication, integrated with court workflow.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>Legal Document Analyzer (Paperbook)</h4>
+                        <p>AI-powered legal paperbook analyzer for Punjab & Haryana High Court, utilizing NLP and summarization techniques.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>TRL3BRL Analyzer</h4>
+                        <p>NLP + ML framework for Technology & Business Readiness Level benchmarking in tech & business reading.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>Institutional Intranet Systems</h4>
+                        <p>Worked on various intranet based solutions</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>AI-Powered Travel Booking Assistant</h4>
+                        <p>Integrated SerpAPI for automated multi-vendor flight booking, simplifying travel planning.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Conferences & Workshops</h2>
+                <div class="conferences">
+                    <div class="conference-category">
+                        <h4>International Engagement</h4>
+                        <div class="conference-item">
+                            <strong>CHI 2025</strong> - Yokohama, Japan<br>
+                            A leading conference on Human-Computer Interaction, showcasing commitment to global tech trends.
+                        </div>
+                    </div>
+                    
+                    <div class="conference-category">
+                        <h4>National AI/ML Leadership</h4>
+                        <div class="conference-item">
+                            <strong>MLDS 2023 & 2024</strong> - Bangalore<br>
+                            Attended India's premier Machine Learning and Data Science summits.
+                        </div>
+                        <div class="conference-item">
+                            <strong>Cypher 2024</strong> - Bangalore<br>
+                            Participated in India's largest AI/ML conference, exchanging insights with industry leaders.
+                        </div>
+                    </div>
+                    
+                    <div class="conference-category">
+                        <h4>Specialized Focus</h4>
+                        <div class="conference-item">
+                            <strong>AI in Healthcare 2024</strong> - IIIT Delhi<br>
+                            Explored the intersection of AI and medical applications.
+                        </div>
+                        <div class="conference-item">
+                            <strong>NCVPRIPG 2024</strong> - IIST, Thiruvananthapuram<br>
+                            Contributed to discussions on Computer Vision, Pattern Recognition, Image Processing, and Graphics.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Achievements & Community</h2>
+                <div class="achievements">
+                    <ul>
+                        <li><strong>Top Rated Freelancer on Upwork</strong> with 100% Job Success - delivered 90+ projects across different regions worldwide, specializing in web-based applications.</li>
+                        <li><strong>GitHub Contributor</strong> - active in publishing and maintaining code repositories for open-source and enterprise projects.</li>
+                        <li><strong>Drupal Community Member</strong> - Drupal StackExchange Profile.</li>
+                        <li><strong>YouTube Channel</strong> - CodeGuru90 (technical tutorials & coding guidance).</li>
+                        <li>Recognized for strong expertise in full-stack development, AI integration, and scalable cloud-based applications.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Strategic Initiatives & Future Vision</h2>
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <h4>Enhanced Data Security On-Premises</h4>
+                        <p>Strengthen institutional IT infrastructure by implementing robust multi-factor authentication, introducing granular access control policies (RBAC), deploying real-time threat detection systems, and encrypting sensitive data at rest and in transit using industry-standard protocols.</p>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <h4>Comprehensive Logging & Auditing</h4>
+                        <p>Establish advanced log management systems to centralize log collection from all critical systems (servers, network devices, applications), implement automated anomaly detection for proactive security incident response, and ensure meticulous audit trails for regulatory compliance and transparency.</p>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <h4>AI-Driven Digital Agency Tools</h4>
+                        <p>Develop and deploy custom AI-powered digital agents and chatbots to provide intelligent assistance to faculty, researchers, and administration. This includes creating specialized AI assistants for answering FAQs, synthesizing research data, and automating routine administrative inquiries.</p>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <h4>Automated Filesystems & Processes</h4>
+                        <p>Significantly reduce manual workload by implementing Robotic Process Automation (RPA) for routine data entry, automating document classification and intelligent routing, and streamlining complex approval workflows to achieve greater administrative efficiency and accuracy across all departments.</p>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <h4>Time-Saving through AI & Cloud Optimization</h4>
+                        <p>Optimize academic and research operations by leveraging scalable cloud platforms (AWS, Azure, GCP) for on-demand compute resources. This involves deploying advanced AI models for predictive analytics in research and developing self-service portals to dramatically reduce manual support requests and operational bottlenecks.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            Thanks
+        </footer>
+    </div>
 </body>
 </html>
